@@ -24,13 +24,50 @@
 
         h2 {
             color: #4CAF50;
+            margin: 10px 0; 
         }
 
-        pre {
+        .code-block {
             background-color: #f4f4f4;
             padding: 10px;
             border-radius: 5px;
-            overflow: auto;
+            font-family: monospace;
+            white-space: pre-wrap; 
+            overflow-x: auto; 
+            margin: 0; 
+        }
+
+        
+        .code-block form {
+            margin: 0; /* Remove margin from form */
+            padding: 0; /* Remove padding from form */
+            display: inline; /* Keeps the form elements inline */
+        }
+
+        .code-block input {
+            margin: 0; 
+            padding: 5px; 
+            border: 1px solid #ccc; 
+            border-radius: 3px; 
+            vertical-align: middle; 
+        }
+
+        
+        .code-block input[type="password"] {
+            margin-right: 0; 
+        }
+
+        .code-block input[type="submit"] {
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            padding: 5px 10px; 
+            vertical-align: middle; 
+        }
+
+        .code-block input[type="submit"]:hover {
+            background-color: #45a049; 
         }
     </style>
 </head>
@@ -40,20 +77,16 @@
     </div>
     <div class="content">
         <h2>Activity 1: Number Counter</h2>
-        <pre>
-        <?php
+        <div class="code-block"><?php
         $i = 2;
         while ($i <= 20) {
             echo $i . " ";
             $i += 2;
         }
-        ?>
-        </pre>
+        ?></div>
 
         <h2>Activity 2: Password Validator</h2>
-        <pre>
-        <?php
-        // Simple web-based password validator
+        <div class="code-block"><?php
         $correctPassword = "password123";
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $input = $_POST['password'];
@@ -65,34 +98,29 @@
         }
         ?>
         <form method="post">
-            <input type="password" name="password" placeholder="Enter password">
+            <input type="password" name="password" placeholder="Enter password" required>
             <input type="submit" value="Submit">
         </form>
-        </pre>
+        </div>
 
         <h2>Activity 3: Multiplication Table of 7</h2>
-        <pre>
-        <?php
+        <div class="code-block"><?php
         for($i = 1; $i <= 10; $i++) {
             echo "7 x $i = " . (7 * $i) . "\n";
         }
-        ?>
-        </pre>
+        ?></div>
 
         <h2>Activity 4: Loop Control</h2>
-        <pre>
-        <?php
+        <div class="code-block"><?php
         for ($i = 1; $i <= 10; $i++) {
             if($i == 5) continue;
             if($i == 9) break;
             echo $i . " ";
         }
-        ?>
-        </pre>
+        ?></div>
 
         <h2>Activity 5: Sum of Numbers</h2>
-        <pre>
-        <?php
+        <div class="code-block"><?php
         $sum = 0;
         $i = 1;
         while ($i <= 100) {
@@ -100,22 +128,18 @@
             $i++;
         }
         echo "The sum of numbers from 1 to 100 is: " . $sum;
-        ?>
-        </pre>
+        ?></div>
 
         <h2>Activity 6: Array Iteration</h2>
-        <pre>
-        <?php
+        <div class="code-block"><?php
         $movies = ["The Shawshank Redemption", "Inception", "The Dark Knight", "Interstellar", "Parasite"];
         foreach ($movies as $index => $movie) {
             echo ($index + 1) . ". $movie\n";
         }
-        ?>
-        </pre>
+        ?></div>
 
         <h2>Activity 7: Key-Value Pairs</h2>
-        <pre>
-        <?php
+        <div class="code-block"><?php
         $student = [
             "Name" => "Alice",
             "Age" => "20",
@@ -125,36 +149,30 @@
         foreach ($student as $key => $value) {
             echo "$key: $value\n";
         }
-        ?>
-        </pre>
+        ?></div>
 
         <h2>Activity 8: Factorial Calculator</h2>
-        <pre>
-        <?php
+        <div class="code-block"><?php
         $number = 5;
         $factorial = 1;
         for ($i = $number; $i >= 1; $i--) {
             $factorial *= $i;
         }
         echo "The factorial of $number is: " . $factorial;
-        ?>
-        </pre>
+        ?></div>
 
         <h2>Activity 9: FizzBuzz Challenge</h2>
-        <pre>
-        <?php
+        <div class="code-block"><?php
         for ($i = 1; $i <= 50; $i++) {
             if ($i % 3 == 0 && $i % 5 == 0) echo "FizzBuzz ";
             elseif ($i % 3 == 0) echo "Fizz ";
             elseif ($i % 5 == 0) echo "Buzz ";
             else echo $i . " ";
         }
-        ?>
-        </pre>
+        ?></div>
 
         <h2>Activity 10: Prime Number Checker</h2>
-        <pre>
-        <?php
+        <div class="code-block"><?php
         $number = 17; 
         $isPrime = true;
         if ($number < 2) $isPrime = false;
@@ -167,12 +185,10 @@
             }
         }
         echo $isPrime ? "$number is a prime number." : "$number is not a prime number.";
-        ?>
-        </pre>
+        ?></div>
 
         <h2>Activity 11: Fibonacci Sequence</h2>
-        <pre>
-        <?php
+        <div class="code-block"><?php
         $num1 = 0;
         $num2 = 1;
         $count = 0;
@@ -184,18 +200,15 @@
             $num2 = $next;
             $count++;
         }
-        ?>
-        </pre>
+        ?></div>
 
         <h2>Activity 12: Reverse a String</h2>
-        <pre>
-        <?php
+        <div class="code-block"><?php
         $input = "Hello";
         $reversed = strrev($input);
         echo "Input: \"$input\"\n";
         echo "Output: \"$reversed\"";
-        ?>
-        </pre>
+        ?></div>
     </div>
     <div class="footer">
         <p>&copy; <?php echo date("Y"); ?> My Website. All rights reserved.</p>
