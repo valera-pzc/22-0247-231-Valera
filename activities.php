@@ -211,7 +211,7 @@
         ?></div>
     </div>
     <div class="footer">
-        <p>&copy; <?php echo date("Y"); ?> My Website. All rights reserved.</p>
+        <p>&copy; <?php echo date("Y"); ?> My Website.</p>
     </div>
 </body>
 </html>
