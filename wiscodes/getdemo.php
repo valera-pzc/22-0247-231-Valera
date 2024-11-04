@@ -16,47 +16,37 @@
     </form>
 
     <?php
-    // Check if the 'query' parameter is set in the URL
-    if (isset($_GET['query'])) {
-        // Retrieve and sanitize the input
-        $searchQuery = htmlspecialchars($_GET['query']);
+if (isset($_GET['query'])) {
+    $searchQuery = htmlspecialchars($_GET['query']);
 
-        // Connect to the database
-        $servername = "localhost";
-        $username = "root"; // Replace with your database username
-        $password = "052781"; // Replace with your database password
-        $dbname = "search_db"; // The database we created earlier
-
-        // Create a connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check the connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Prepare a SQL statement to search for book titles matching the query
-        $sql = "SELECT * FROM books WHERE title LIKE '%$searchQuery%'";
-        $result = $conn->query($sql);
-
-        // Check if any results were found
-        if ($result->num_rows > 0) {
-            echo "<h2>Search Results:</h2>";
-            echo "<ul>";
-            
-            // Output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "<li>" . $row["title"] . " by " . $row["author"] . " (" . $row["year_published"] . ")</li>";
-            }
-            echo "</ul>";
-        } else {
-            echo "No results found for: " . $searchQuery;
-        }
-
-        // Close the database connection
-        $conn->close();
+    $servername = "127.0.0.1";  // Changed from "localhost" to "127.0.0.1"
+    $username = "root"; // Your username
+    $password = ""; // Your password
+    $dbname = "search_db"; // Your database name
+    $socket = "/data/data/com.termux/files/usr/var/mysql/mysql.sock"; // Path to the MySQL socket
+    
+    $conn = new mysqli($servername, $username, $password, $dbname, null, $socket);
+    
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
-    ?>
+
+    $sql = "SELECT * FROM books WHERE title LIKE '%$searchQuery%'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        echo "<h2>Search Results:</h2><ul>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<li>" . $row["title"] . " by " . $row["author"] . " (" . $row["year_published"] . ")</li>";
+        }
+        echo "</ul>";
+    } else {
+        echo "No results found for: " . $searchQuery;
+    }
+
+    $conn->close();
+}
+?>
 
 <h3>Database Connection</h3>    
 <ul>
