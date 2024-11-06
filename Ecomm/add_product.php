@@ -33,31 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="number" step="0.01" name="price" placeholder="Price" required><br>
         <input type="number" name="stock" placeholder="Stock Quantity" required><br>
         <button type="submit">Add Product</button>
-    </form>
-</body>
-</html>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Contact</title>
-</head>
-<body>
-    <h2>Add a New Contact</h2>
-
-
-    <form method = "post" action="add.php">
-        Name: <input type="text" name="name"><br><br>
-        Phone: <input type="text" name="phone"><br><br>
-        <input type="submit" value ="Add Contact"> 
-
-     
-    </form>
-    <a href="index.php">Back to PhoneBook</a>
-    
+    </form>    
 </body>
 </html>
